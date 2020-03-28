@@ -15,7 +15,14 @@ import Login from './views/Login.vue';
     Login,
   },
 })
-export default class Auth extends Vue {}
+export default class Auth extends Vue {
+  private teste: string;
+
+  constructor() {
+    super();
+    this.teste = '1';
+  }
+}
 </script>
 
 <style>

@@ -1,6 +1,7 @@
 <template>
   <div class="login-card">
     <p>Login</p>
+    <span>{{ name }}</span>
     <div>
       <input type="text" id="login" @change="isFilled" v-model="username" />
       <label for="login">Usuario</label>
@@ -10,79 +11,19 @@
       <label for="password">Senha</label>
     </div>
     <div>
-      <button @click="login()">Entrar</button>
+      <button class="logout" @click="logout()" v-if="!isGuest">Desconectar</button>
+      <button class="login" @click="login()">Entrar</button>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import LoginState from './LoginState.vue';
+import Component from 'vue-class-component';
 
 Component({
   name: 'Login',
 });
-export default class Login extends Vue {
-  /**
-   *
-   * @private
-   * @type {string}
-   * @memberof Login
-   */
-  private username: string;
-
-  /**
-   *
-   * @private
-   * @type {string}
-   * @memberof Login
-   */
-  private password: string;
-
-  /**
-   *Creates an instance of Login.
-   * @memberof Login
-   */
-  constructor() {
-    super();
-
-    this.username = '';
-    this.password = '';
-    this.$request.get('https://auth-staging.platafoor.com/api/me');
-  }
-
-  /**
-   *
-   * @private
-   * @param {*} event
-   * @memberof Login
-   */
-  private isFilled(event: any): void {
-    if (event.target.value.includes('filled')) {
-      event.target.classList.remove('filled');
-    } else {
-      event.target.classList.add('filled');
-    }
-  }
-
-  /**
-   *
-   * @private
-   * @memberof Login
-   */
-  private login(): void {
-    this.$auth
-      .login({
-        // 'username': this.username,
-        // 'password': this.password,
-        username: 'carlos2103t1@mailinator.com',
-        password: 'carlos2103t1',
-      })
-      .then(() => {
-        if (this.$auth.isAuthenticated()) {
-          // this.$vueRouter.push('/companies');
-        }
-      });
-  }
-}
+export default class Login extends LoginState {}
 </script>
 
 <style>
@@ -99,8 +40,14 @@ export default class Login extends Vue {
 }
 .login-card > p {
   font-family: sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 45px;
+}
+.login-card > span {
+  margin-bottom: 15px;
+  display: inline-block;
+  font-size: 14px;
+  font-style: italic;
 }
 .login-card > div {
   position: relative;
@@ -136,7 +83,72 @@ export default class Login extends Vue {
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
-  background-color: #0084ff;
   color: #fff;
+}
+.login-card > div button.login {
+  background-color: #0084ff;
+}
+.login-card > div button.logout {
+  color: #444;
+  background-color: #ccc;
+}
+.loading {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+.loading::after {
+  content: '';
+  width: 90px;
+  height: 90px;
+  display: block;
+  position: absolute;
+  top: calc(50% - 45px);
+  left: calc(50% - 45px);
+  background-color: transparent;
+  border: 6px solid #fff;
+  border-radius: 100%;
+  border-right: transparent;
+  border-top: transparent;
+  animation: loading_animation 1s infinite;
+}
+@keyframes loading_animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(36deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  30% {
+    transform: rotate(108deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  50% {
+    transform: rotate(216deg);
+  }
+  60% {
+    transform: rotate(252deg);
+  }
+  70% {
+    transform: rotate(279deg);
+  }
+  80% {
+    transform: rotate(306deg);
+  }
+  90% {
+    transform: rotate(333deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

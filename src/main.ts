@@ -5,15 +5,15 @@ import singleSpaVue from 'single-spa-vue';
 Vue.config.productionTip = false
 
 // Resquest
-import Request from './kernel/request';
+import Request from './kernel/request/Request';
 Vue.use(Request);
 
 // Authentication
-import Auth from './kernel/authentication';
+import Auth from './kernel/authentication/Authentication';
 Vue.use(Auth);
 
 // Router
-import router from './kernel/router';
+import router from './kernel/router/Router';
 
 const vueLifecycles = singleSpaVue({
   Vue,

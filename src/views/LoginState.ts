@@ -1,4 +1,3 @@
-<script lang="ts">
 import Vue from 'vue';
 import User from '../entities/User';
 import { AxiosResponse } from 'axios';
@@ -10,7 +9,7 @@ export default class LoginState extends Vue {
    * @type {string}
    * @memberof Login
    */
-  private username = '';
+  private username: string = '';
 
   /**
    *
@@ -18,7 +17,7 @@ export default class LoginState extends Vue {
    * @type {string}
    * @memberof Login
    */
-  private password = '';
+  private password: string = '';
 
   /**
    *
@@ -26,7 +25,7 @@ export default class LoginState extends Vue {
    * @type {string}
    * @memberof Login
    */
-  private authUser = '';
+  private authUser: string = '';
 
   /**
    *
@@ -46,10 +45,6 @@ export default class LoginState extends Vue {
 
     this.me();
     this.listUsers();
-  }
-
-  mounted() {
-    console.log(1)
   }
 
   /**
@@ -197,4 +192,3 @@ export default class LoginState extends Vue {
     this.$forceUpdate();
   }
 }
-</script>

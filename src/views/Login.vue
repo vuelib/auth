@@ -16,15 +16,6 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import LoginState from './LoginState.vue';
-import Component from 'vue-class-component';
-
-Component({
-  name: 'Login',
-});
-export default class Login extends LoginState {}
-</script>
 
 <style>
 * {
@@ -152,3 +143,13 @@ export default class Login extends LoginState {}
   }
 }
 </style>
+
+<script lang="ts">
+import LoginState from './LoginState';
+import Component from 'vue-class-component';
+
+Component({
+  name: 'Login',
+});
+export default class Login extends LoginState {}
+</script>

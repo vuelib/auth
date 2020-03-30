@@ -1,6 +1,5 @@
 <template>
   <div id="app-auth">
-    <!-- <login msg="Welcome to Your Vue.js + TypeScript App"/> -->
     <router-view />
   </div>
 </template>
@@ -20,7 +19,6 @@ export default class Auth extends Vue {
 
   constructor() {
     super();
-    this.teste = '1';
   }
 }
 </script>

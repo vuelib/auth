@@ -6,12 +6,10 @@ config.plugins.push(new webpack.NamedModulesPlugin());
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.devServer = {
   headers: {
-    "Access-Control-Allow-Origin": "*",
+    'Access-Control-Allow-Origin': '*',
   },
-}
+};
 
-config.mode = 'development'
+config.mode = 'development';
 
 module.exports = config;
-
-

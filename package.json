@@ -33,6 +33,8 @@
     "@vue/eslint-config-typescript": "^5.0.1",
     "babel-loader": "^8.1.0",
     "babel-preset-typescript-vue": "^1.0.3",
+    "clean-webpack-plugin": "0.1.19",
+    "copy-webpack-plugin": "4.5.2",
     "css-loader": "^3.4.2",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.10.1",
@@ -45,6 +47,9 @@
     "url-loader": "^4.0.0",
     "vue-loader": "^15.9.1",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.41.6",
+    "webpack-cli": "3.1.0",
+    "webpack-dev-server": "^3.1.14"
   }
 }

@@ -9,7 +9,7 @@ class User extends Model {
    *
    * @memberof User
    */
-  readonly baseUrl = 'api/users'
+  readonly baseUrl = 'api/users';
 
   /**
    *
@@ -47,7 +47,7 @@ class User extends Model {
     return this.request({
       method: 'GET',
       url: 'api/me',
-    })
+    });
   }
 }
 

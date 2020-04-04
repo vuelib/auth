@@ -1,20 +1,28 @@
 <template>
-  <div class="login-card">
-    <p>Login</p>
-    <span>{{ name }}</span>
-    <div>
-      <input type="text" id="login" @change="isFilled" v-model="username" />
-      <label for="login">Usuario</label>
-    </div>
-    <div>
-      <input type="password" id="password" @change="isFilled" v-model="password" />
-      <label for="password">Senha</label>
-    </div>
-    <div>
-      <button class="logout" @click="logout()" v-if="!isGuest">Desconectar</button>
-      <button class="login" @click="login()">Entrar</button>
-    </div>
-  </div>
+  <sant-card theme="dark" class="login-card">
+    <sant-card-header>
+      <img src="../assets/persona.png" alt="" />
+      <span>{{ name }}</span>
+    </sant-card-header>
+    <sant-card-content>
+      <div>
+        <input type="text" id="login" v-if="isGuest" @change="isFilled" v-model="username" />
+        <label for="login" v-if="isGuest">Usuario</label>
+      </div>
+      <div>
+        <input type="password" id="password" @change="isFilled" v-model="password" />
+        <label for="password">Senha</label>
+      </div>
+    </sant-card-content>
+    <sant-card-footer>
+      <div>
+        <button class="login" @click="login()">Entrar</button>
+      </div>
+      <div>
+        <button class="logout flat" @click="logout()" v-if="!isGuest">Sair</button>
+      </div>
+    </sant-card-footer>
+  </sant-card>
 </template>
 
 <style>
@@ -22,66 +30,81 @@
   box-sizing: border-box;
 }
 .login-card {
-  width: 400px;
-  height: 400px;
-  padding: 30px;
+  width: 450px;
+  /* height: 560px; */
+  /* padding: 30px; */
   position: absolute;
-  top: calc(50% - 200px);
-  left: calc(50% - 200px);
+  top: calc(50% - 280px);
+  left: calc(50% - 225px);
+  /* background: #000; */
+  color: #fff;
+  border-radius: 10px;
 }
-.login-card > p {
-  font-family: sans-serif;
-  font-size: 24px;
-  margin-bottom: 45px;
+.login-card div.header > img {
+  border-radius: 100%;
+  height: 150px;
+  display: block;
+  position: relative;
+  left: calc(50% - 75px);
 }
-.login-card > span {
-  margin-bottom: 15px;
+.login-card div.header > span {
+  margin: 25px 0 0;
   display: inline-block;
-  font-size: 14px;
-  font-style: italic;
+  position: relative;
+  font-size: 20px;
 }
-.login-card > div {
+.login-card > div.container {
+  padding: 20px;
+  width: 100%;
+}
+.login-card > div.container div {
   position: relative;
   padding: 10px 20px;
-  margin: 15px 0;
+  margin: 10px 0;
 }
-.login-card > div input {
-  padding: 10px 12px;
-  width: 100%;
-  color: #666;
-  border-radius: 5px;
-  border: 1px solid #aaa;
+.login-card > div.container input {
+  padding: 14px 20px;
+  width: 300px;
+  color: #fff;
+  background-color: #222;
+  border: none;
+  border-radius: 100px;
   outline: none;
 }
-.login-card > div input + label {
+.login-card > div.container input + label {
   position: absolute;
-  left: 35px;
-  top: 20px;
+  left: 60px;
+  top: 24px;
   color: #aaa;
   transition: 0.3s;
   font-size: 14px;
 }
-.login-card > div input:focus + label,
-.login-card > div input.filled + label {
+.login-card > div.container input:focus + label,
+.login-card > div.container input.filled + label {
   top: -10px;
-  left: 24px;
+  left: 55px;
   transition: 0.3s;
-  color: #444;
-}
-.login-card > div button {
-  padding: 12px 30px;
-  margin-top: 15px;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 5px;
   color: #fff;
 }
-.login-card > div button.login {
-  background-color: #0084ff;
+.login-card > div.footer button {
+  padding: 12px 30px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 100px;
+  color: #fff;
 }
-.login-card > div button.logout {
-  color: #444;
-  background-color: #ccc;
+.login-card > div.footer button:hover {
+  cursor: pointer;
+}
+.login-card > div.footer button.login {
+  background-color: #0084ff;
+  width: 160px;
+}
+.login-card > div.footer button.logout {
+  color: #aaa;
+  font-size: 12px;
+  background-color: transparent;
 }
 .loading {
   background: rgba(0, 0, 0, 0.6);
